@@ -31,9 +31,6 @@ public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.c
 
         mAdapter = new ChatRoomAdapter(this, this);
         mRecyclerView.setAdapter(mAdapter);
-
-        //ToDo Create firebase console project
-        //ToDo Add firebase to the project
     }
 
     @Override
