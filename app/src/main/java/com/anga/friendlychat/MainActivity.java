@@ -9,6 +9,8 @@ import com.anga.friendlychat.adapters.ChatRoomAdapter;
 
 public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.chatRoomOnClickListener {
 
+    //ToDo (04) Add Firebase instance variables
+
     RecyclerView mRecyclerView;
     ChatRoomAdapter mAdapter;
 
@@ -32,12 +34,14 @@ public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.c
         mAdapter = new ChatRoomAdapter(this, this);
         mRecyclerView.setAdapter(mAdapter);
 
-        //ToDo Create firebase console project
-        //ToDo Add firebase to the project
+        //ToDo (05) Check for current user
     }
 
     @Override
     public void onClick(int position) {
 
     }
+
+    //ToDo (06) Implement sign out
+    //ToDo (07) Implement sign in
 }
