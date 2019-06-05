@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Friendly Chat</string>
+    <string name="chat_room_image">Chat room image</string>
+    <string name="last_message">Last message</string>
+    <string name="room_name">Room name</string>
+    <string name="date">Date</string>
+    <string name="select_photo_from_gallery">Select photo from gallery</string>
+    <string name="type_message">Type message</string>
+    <string name="send_image_button">Send image button</string>
+    <string name="message">Message</string>
+    <string name="time">Time</string>
+    <string name="display_name">Display name</string>
+</resources>
