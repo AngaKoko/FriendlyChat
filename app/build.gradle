@@ -36,7 +36,7 @@ dependencies {
     //ToDo (1) Add chat room documents from your console in firebase. Use firestore database
     //ToDo (2) Add Firebase Firestore dependency and Storage dependency
 
-    //ToDo (5) Add glide dependency 
+    //ToDo (5) Add glide dependency
 
 }
 apply plugin: 'com.google.gms.google-services'
