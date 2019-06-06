@@ -78,7 +78,7 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHo
             mLastMessage.setText(chatRoom.getLastMessage());
             mUdatedAt.setText(Utils.getShortDate(chatRoom.getCreatedAt()));
 
-            //ToDo (6) user glide to display room image
+            //ToDo (6) use glide to display room image
         }
 
         @Override
