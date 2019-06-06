@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.anga.friendlychat.adapters.ChatRoomAdapter;
 import com.anga.friendlychat.data.ChatRoom;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.c
 
     RecyclerView mRecyclerView;
     ChatRoomAdapter mAdapter;
+    ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.c
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
 
+
+        mProgressBar = findViewById(R.id.progressBar);
 
         mRecyclerView = findViewById(R.id.recycler_view);
         //Creating a Layout for our RecycleView
@@ -72,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.c
 
     //(4) read data from rooms collection
     private void getRooms(){
+        mProgressBar.setVisibility(View.VISIBLE);
 
         db.collection("rooms")
                 .limit(10)
@@ -80,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.c
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         ChatRoom room;
+                        mProgressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("GET_ROOMS", document.getId() + " => " + document.getData());

@@ -67,7 +67,7 @@ public class Utils {
         try{
 
             StorageReference ref = FirebaseStorage.getInstance().getReference()
-                    .child("chat_photos").child(imagePath);
+                    .child(imagePath);
 
             ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
