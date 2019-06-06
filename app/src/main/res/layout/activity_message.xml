@@ -91,7 +91,8 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/send_image_button"
             app:srcCompat="@drawable/ic_send"
-            tools:ignore="VectorDrawableCompat" />
+            tools:ignore="VectorDrawableCompat"
+            android:foreground="?android:attr/selectableItemBackground"/>
     </LinearLayout>
 
 

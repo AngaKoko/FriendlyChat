@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.anga.friendlychat.R;
 import com.anga.friendlychat.Utils;
 import com.anga.friendlychat.data.Messages;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -47,6 +48,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         return 0;
     }
 
+    public void addMessage(Messages messages){
+        mMessages.add(0, messages);
+        notifyDataSetChanged();
+    }
+
     public Messages getItem(int position){
         return mMessages.get(position);
     }
@@ -74,10 +80,23 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
 
         void bindView(int position){
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+            String uid = auth.getCurrentUser().getUid();
+
             Messages messages = getItem(position);
 
-            mSentText.setText(messages.getMessage());
-            mSentTime.setText(Utils.getTime(messages.getCreatedAt()));
+            if(uid.compareTo(messages.getUid()) == 0){
+                mMessageLayout.setVisibility(View.GONE);
+                mSendLayout.setVisibility(View.VISIBLE);
+                mSentText.setText(messages.getMessage());
+                mSentTime.setText(Utils.getTime(messages.getCreatedAt()));
+            }else{
+                mSendLayout.setVisibility(View.GONE);
+                mMessageLayout.setVisibility(View.VISIBLE);
+                mDisplayName.setText(messages.getDisplayName());
+                mMessageText.setText(messages.getMessage());
+                mTimeText.setText(Utils.getTime(messages.getCreatedAt()));
+            }
         }
     }
 }
