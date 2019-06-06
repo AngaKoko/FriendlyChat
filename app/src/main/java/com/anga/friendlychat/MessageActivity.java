@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -13,10 +14,9 @@ public class MessageActivity extends AppCompatActivity {
 
     RecyclerView mRecyclerView;
     MessageAdapter mAdapter;
-    ImageButton mSendButton, mGalleryButton;
+    ImageButton mSendButton, mGalleryButton, mNavImageButton;
     EditText mMessageText;
 
-    String mRoomName, mLastMessage, mImagePath, mDisplayName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class MessageActivity extends AppCompatActivity {
         mSendButton = findViewById(R.id.send_button);
         mGalleryButton = findViewById(R.id.gallery_button);
         mMessageText = findViewById(R.id.message_text);
+        mNavImageButton = findViewById(R.id.nav_image_button);
 
         mRecyclerView = findViewById(R.id.recycler_view);
 
@@ -46,6 +47,13 @@ public class MessageActivity extends AppCompatActivity {
 
         //ToDo (2) get chat room from extra
         //ToDo (3) assign relevant variables
+
+        mNavImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     //ToDo (4) listen to life data

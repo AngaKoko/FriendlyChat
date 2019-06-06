@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SignInActivity"
             android:theme="@style/NoActionBarTheme"/>
-        <activity android:name=".MessageActivity" />
+        <activity android:name=".MessageActivity"
+            android:theme="@style/NoActionBarTheme"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
