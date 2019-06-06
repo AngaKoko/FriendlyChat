@@ -178,6 +178,7 @@ public class MessageActivity extends AppCompatActivity {
         //Update the room document
         Map<String, Object> roomMap = new HashMap<>();
         roomMap.put("updatedAt", ts);
+        roomMap.put("lastMessage", message);
         db.collection("rooms").document(mRoom.getId()).update(roomMap);
 
         mMessageText.setText("");
