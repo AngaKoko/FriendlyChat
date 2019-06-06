@@ -2,10 +2,21 @@ package com.anga.friendlychat;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.text.format.DateFormat;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -50,5 +61,29 @@ public class Utils {
         }catch (Exception e) {
         }
         return "";
+    }
+
+    public static void setProfileImage(final Context context, String imagePath, final ImageView view){
+        try{
+
+            StorageReference ref = FirebaseStorage.getInstance().getReference()
+                    .child("chat_photos").child(imagePath);
+
+            ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(context.getApplicationContext())
+                            .load(uri)
+                            .apply(RequestOptions.circleCropTransform())
+                            .into(view);
+                    Log.d("STORAGE", "success"+uri);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d("STORAGE", "error"+e);
+                }
+            });
+        }catch (Exception e){e.printStackTrace();}
     }
 }

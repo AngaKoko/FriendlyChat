@@ -33,10 +33,15 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:17.0.0'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
 
-    //ToDo (1) Add chat room documents from your console in firebase. Use firestore database
-    //ToDo (2) Add Firebase Firestore dependency and Storage dependency
+    //(1) Add chat room documents from your console in firebase. Use firestore database
+    //(2) Add Firebase Firestore dependency and Storage dependency
+    implementation 'com.google.firebase:firebase-firestore:19.0.2'
+    implementation 'com.google.firebase:firebase-storage:17.0.0'
 
-    //ToDo (5) Add glide dependency
+    //(5) Add glide dependency
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
 
 }
 apply plugin: 'com.google.gms.google-services'

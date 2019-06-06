@@ -53,6 +53,12 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHo
         return 0;
     }
 
+    //add rooms from query
+    public void addData(ChatRoom room){
+        mRooms.add(room);
+        notifyDataSetChanged();
+    }
+
     //Get a room at a certain position
     private ChatRoom getItem(int position){return mRooms.get(position);}
 
@@ -78,7 +84,8 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHo
             mLastMessage.setText(chatRoom.getLastMessage());
             mUdatedAt.setText(Utils.getShortDate(chatRoom.getCreatedAt()));
 
-            //ToDo (6) user glide to display room image
+            //(6) use glide to display room image
+            Utils.setProfileImage(mContext, chatRoom.getImgPath(), mRoomImage);
         }
 
         @Override
