@@ -1,12 +1,18 @@
 package com.anga.friendlychat;
 
 import android.content.Intent;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.anga.friendlychat.adapters.MessageAdapter;
 import com.anga.friendlychat.data.ChatRoom;
@@ -15,10 +21,11 @@ public class MessageActivity extends AppCompatActivity {
 
     RecyclerView mRecyclerView;
     MessageAdapter mAdapter;
-    ImageButton mSendButton, mGalleryButton;
+    ImageButton mSendButton, mGalleryButton, mNavImageButton;
+    ImageView mProfileImage;
     EditText mMessageText;
+    TextView mHeader;
 
-    String mRoomName, mLastMessage, mImagePath, mDisplayName;
     ChatRoom mRoom;
 
     @Override
@@ -29,6 +36,9 @@ public class MessageActivity extends AppCompatActivity {
         mSendButton = findViewById(R.id.send_button);
         mGalleryButton = findViewById(R.id.gallery_button);
         mMessageText = findViewById(R.id.message_text);
+        mNavImageButton = findViewById(R.id.nav_image_button);
+        mHeader = findViewById(R.id.header);
+        mProfileImage = findViewById(R.id.room_image);
 
         mRecyclerView = findViewById(R.id.recycler_view);
 
@@ -54,6 +64,13 @@ public class MessageActivity extends AppCompatActivity {
             mRoom = (ChatRoom) intent.getSerializableExtra("room");
         }
         //ToDo (3) assign relevant variables
+
+        mNavImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     //ToDo (4) listen to life data
