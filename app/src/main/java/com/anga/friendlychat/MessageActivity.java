@@ -16,6 +16,8 @@ public class MessageActivity extends AppCompatActivity {
     ImageButton mSendButton, mGalleryButton;
     EditText mMessageText;
 
+    String mRoomName, mLastMessage, mImagePath, mDisplayName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,5 +43,12 @@ public class MessageActivity extends AppCompatActivity {
 
         mAdapter = new MessageAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
+
+        //ToDo (2) get chat room from extra
+        //ToDo (3) assign relevant variables
     }
+
+    //ToDo (4) listen to life data
+
+    //ToDo (5) send message
 }

@@ -3,7 +3,9 @@ package com.anga.friendlychat.data;
 
 import android.support.annotation.NonNull;
 
-public class Messages {
+import java.io.Serializable;
+
+public class Messages implements Serializable {
 
     private long createdAt;
     private String imagePath;

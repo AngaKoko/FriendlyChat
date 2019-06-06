@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.c
 
     @Override
     public void onClick(int position) {
+        //ToDo (1) Start Message Activity onClick
 
     }
 
