@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.anga.friendlychat.adapters.ChatRoomAdapter;
 import com.anga.friendlychat.data.ChatRoom;
@@ -24,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.chatRoomOnClickListener {
@@ -102,8 +104,12 @@ public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.c
 
     @Override
     public void onClick(int position) {
-        //ToDo (1) Start Message Activity onClick
+        //(1) Start Message Activity onClick
+        ChatRoom room = mAdapter.getItem(position);
 
+        Intent intent = new Intent(this, MessageActivity.class);
+        intent.putExtra("room", room);
+        startActivity(intent);
     }
 
     @Override

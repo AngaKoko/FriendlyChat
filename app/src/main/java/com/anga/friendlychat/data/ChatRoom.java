@@ -2,7 +2,9 @@ package com.anga.friendlychat.data;
 
 import android.support.annotation.NonNull;
 
-public class ChatRoom {
+import java.io.Serializable;
+
+public class ChatRoom implements Serializable {
 
     private long createdAt;
     private long updatedAt;

@@ -60,7 +60,7 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHo
     }
 
     //Get a room at a certain position
-    private ChatRoom getItem(int position){return mRooms.get(position);}
+    public ChatRoom getItem(int position){return mRooms.get(position);}
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -75,6 +75,8 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHo
             mRoomName = itemView.findViewById(R.id.chat_room_name);
             mUdatedAt = itemView.findViewById(R.id.updated_at);
             mLastMessage = itemView.findViewById(R.id.last_message);
+
+            itemView.setOnClickListener(this);
         }
 
         void bindView(int position){

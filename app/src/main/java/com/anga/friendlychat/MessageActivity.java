@@ -1,5 +1,6 @@
 package com.anga.friendlychat;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.anga.friendlychat.adapters.MessageAdapter;
+import com.anga.friendlychat.data.ChatRoom;
 
 public class MessageActivity extends AppCompatActivity {
 
@@ -17,6 +19,7 @@ public class MessageActivity extends AppCompatActivity {
     EditText mMessageText;
 
     String mRoomName, mLastMessage, mImagePath, mDisplayName;
+    ChatRoom mRoom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,12 @@ public class MessageActivity extends AppCompatActivity {
         mAdapter = new MessageAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
 
-        //ToDo (2) get chat room from extra
+        //(2) get chat room from extra
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if(bundle != null){
+            mRoom = (ChatRoom) intent.getSerializableExtra("room");
+        }
         //ToDo (3) assign relevant variables
     }
 
