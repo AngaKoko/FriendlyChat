@@ -16,9 +16,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.chatRoomOnClickListener {
 
-    //(04) Add Firebase instance variables
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
+
+    //ToDo (3) Initialize an instance of Cloud Firestore
 
     RecyclerView mRecyclerView;
     ChatRoomAdapter mAdapter;
@@ -47,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.c
         mAdapter = new ChatRoomAdapter(this, this);
         mRecyclerView.setAdapter(mAdapter);
 
-        //(05) Check for current user
         if (mFirebaseUser == null) {
             // Not signed in, launch the Sign In activity
             startActivity(new Intent(this, SignInActivity.class));
@@ -55,12 +55,15 @@ public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.c
         }
     }
 
+    //ToDo (4) read data from rooms collection
+    private void getRooms(){
+
+    }
+
     @Override
     public void onClick(int position) {
 
     }
-
-    //(06) Implement sign out
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -80,6 +83,4 @@ public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.c
                 return super.onOptionsItemSelected(item);
         }
     }
-
-    //(07) Implement sign in
 }

@@ -30,10 +30,13 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-core:16.0.9'
 
-    //(01) Update firestore rules in firebase console
-    //(02) Configure authentication api
-    //(03) Add Firebase Auth dependency
     implementation 'com.google.firebase:firebase-auth:17.0.0'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
+
+    //ToDo (1) Add chat room documents from your console in firebase. Use firestore database
+    //ToDo (2) Add Firebase Firestore dependency and Storage dependency
+
+    //ToDo (5) Add glide dependency 
+
 }
 apply plugin: 'com.google.gms.google-services'

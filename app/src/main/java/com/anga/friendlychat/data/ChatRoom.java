@@ -9,7 +9,7 @@ public class ChatRoom {
     private String roomName;
     private String description;
     private String lastMessage;
-    private String imgUrl;
+    private String imgPath;
     private String id;
 
     public ChatRoom(){}
@@ -20,7 +20,7 @@ public class ChatRoom {
         this.roomName = roomName;
         this.description = description;
         this.lastMessage = lastMessage;
-        this.imgUrl = imgUrl;
+        this.imgPath = imgUrl;
     }
 
     //used to assign the id of a document from firestore to an object
@@ -35,5 +35,5 @@ public class ChatRoom {
     public String getRoomName(){return roomName;}
     public String getDescription(){return description;}
     public String getLastMessage(){return lastMessage;}
-    public String getImgUrl(){return imgUrl;}
+    public String getImgPath(){return imgPath;}
 }
