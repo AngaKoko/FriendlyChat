@@ -30,8 +30,10 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-core:16.0.9'
 
-    //ToDo (01) Update firestore rules in firebase console
-    //ToDo (02) Configure authentication api
-    //ToDo (03) Add Firebase Auth dependency
+    //(01) Update firestore rules in firebase console
+    //(02) Configure authentication api
+    //(03) Add Firebase Auth dependency
+    implementation 'com.google.firebase:firebase-auth:17.0.0'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
 }
 apply plugin: 'com.google.gms.google-services'

@@ -1,15 +1,24 @@
 package com.anga.friendlychat;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.anga.friendlychat.adapters.ChatRoomAdapter;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.chatRoomOnClickListener {
 
-    //ToDo (04) Add Firebase instance variables
+    //(04) Add Firebase instance variables
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser mFirebaseUser;
 
     RecyclerView mRecyclerView;
     ChatRoomAdapter mAdapter;
@@ -18,6 +27,10 @@ public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.c
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Initialize Firebase Auth
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
 
         mRecyclerView = findViewById(R.id.recycler_view);
         //Creating a Layout for our RecycleView
@@ -34,7 +47,12 @@ public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.c
         mAdapter = new ChatRoomAdapter(this, this);
         mRecyclerView.setAdapter(mAdapter);
 
-        //ToDo (05) Check for current user
+        //(05) Check for current user
+        if (mFirebaseUser == null) {
+            // Not signed in, launch the Sign In activity
+            startActivity(new Intent(this, SignInActivity.class));
+            finish();
+        }
     }
 
     @Override
@@ -42,6 +60,26 @@ public class MainActivity extends AppCompatActivity implements ChatRoomAdapter.c
 
     }
 
-    //ToDo (06) Implement sign out
-    //ToDo (07) Implement sign in
+    //(06) Implement sign out
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_sign_out:
+                mFirebaseAuth.signOut();
+                startActivity(new Intent(this, SignInActivity.class));
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    //(07) Implement sign in
 }
