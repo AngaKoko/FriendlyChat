@@ -1,12 +1,9 @@
 # FriendlyChat
 Friendly chat is a sample chat app that uses firebase firestore 
 
-# FriendlyChat
-Friendly chat is a sample chat app that uses cloud firestore for storage
-
 It follows the code lab from https://codelabs.developers.google.com/codelabs/firebase-android/#0 
 
-1. Get the starter cod
+1. Get the starter code
 2. Create a firebase project and add you app to firebase https://console.firebase.google.com/
 3. Enable Authentication https://firebase.google.com/docs/auth/android/google-signin?authuser=0
 4. Read message https://firebase.google.com/docs/firestore/quickstart?authuser=0
